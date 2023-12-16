@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.up.railway.app/railway.schema.json",
+    "build": {
+        "builder": "NIXPACKS",
+        "nixpacksPlan": {
+            "phases": {
+                "setup": {
+                    "nixPkgs": [
+                        "...",
+                        "gcc",
+                        "python311"
+                    ],
+                    "aptPkgs": [
+                        "build-essential",
+                        "glibc-source"
+                    ]
+                }
+            }
+        }
+    }
+}
