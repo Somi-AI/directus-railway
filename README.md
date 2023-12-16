@@ -17,7 +17,7 @@ tags:
 
 This example runs a [Directus](https://directus.io/) instance with minimal config using PostGIS.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/zAZIod?referralCode=OYCuBb)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/XQc69P?referralCode=OYCuBb)
 
 ## ✨ Features
 
