@@ -1,5 +1,5 @@
 # Explicitly specify a Directus version to use on Railway
-FROM directus/directus:10.9
+FROM directus/directus:10.9.2
 
 USER root
 RUN corepack enable
@@ -11,5 +11,5 @@ RUN pnpm install directus-extension-computed-interface && pnpm install directus-
 # Uncomment this if you would like to install contributed/custom extensions through the extensions folder on Railway
 #COPY ./extensions /directus/extensions
 
-COPY ./config.js /directus/config.js
+COPY ./config.cjs /directus/config.cjs
 
