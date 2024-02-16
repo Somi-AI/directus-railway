@@ -1,4 +1,4 @@
-module.exports = function (env) {
+export default function (env) {
     return {
             // Railway inputs
             ADMIN_EMAIL: env.ADMIN_EMAIL,
