@@ -1,5 +1,5 @@
 # Explicitly specify a Directus version to use on Railway
-FROM directus/directus:10.8
+FROM directus/directus:10.13.1
 
 USER root
 RUN corepack enable
