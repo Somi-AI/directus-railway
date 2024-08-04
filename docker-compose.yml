@@ -3,7 +3,7 @@ services:
   database:
     image: postgis/postgis:13-master
     # Required when running on platform other than amd64, like Apple M1/M2:
-    platform: linux/amd64
+    # platform: linux/amd64
     volumes:
       - ./data/database:/var/lib/postgresql/data
     environment:
@@ -22,6 +22,7 @@ services:
       - ./database:/directus/database
       - ./uploads:/directus/uploads
       - ./extensions:/directus/extensions
+      - ./templates:/directus/templates
     depends_on:
       - cache
       - database
