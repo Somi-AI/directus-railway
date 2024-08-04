@@ -1,4 +1,4 @@
-export default function (env) {
+module.exports = function (env) {
     return {
             // Railway inputs
             ADMIN_EMAIL: env.ADMIN_EMAIL,
@@ -22,5 +22,10 @@ export default function (env) {
             STORAGE_S3_BUCKET:  env.STORAGE_S3_BUCKET,
             STORAGE_S3_ENDPOINT: env.STORAGE_S3_ENDPOINT,
             WEBSOCKETS_ENABLED: env.WEBSOCKETS_ENABLED,
+            CORS_ENABLED: env.CORS_ENABLED,
+            CORS_ORIGIN: env.CORS_ORIGIN,
+            CORS_ALLOWED_HEADERS: env.CORS_ALLOWED_HEADERS,
+            CORS_EXPOSED_HEADERS: env.CORS_EXPOSED_HEADERS,
+            CORS_METHODS: env.CORS_METHODS,
     };
 };

@@ -1,5 +1,4 @@
 # For local development, you can use the following docker-compose.yml file:
-version: "3"
 services:
   database:
     image: postgis/postgis:13-master
@@ -16,7 +15,7 @@ services:
     image: redis:6
 
   directus:
-    image: directus/directus:10.8
+    image: directus/directus:10.13.1
     ports:
       - 8055:8055
     volumes:
@@ -44,6 +43,7 @@ services:
       ADMIN_EMAIL: "admin@example.com"
       ADMIN_PASSWORD: "d1r3ctu5"
 
+      WEBSOCKETS_ENABLED: "true"
       EXTENSIONS_AUTO_RELOAD: "true"
 
       # Make sure to set this in production
