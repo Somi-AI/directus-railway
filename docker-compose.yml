@@ -10,12 +10,33 @@ services:
       POSTGRES_USER: "directus"
       POSTGRES_PASSWORD: "directus"
       POSTGRES_DB: "directus"
+    # Install the latest version of Docker Engine for healthcheck support:
+    healthcheck:
+      test: ["CMD", "pg_isready", "--host=localhost", "--username=directus"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_interval: 5s
+      start_period: 30s
+    ports:
+      - 5432:5432
+
 
   cache:
     image: redis:6
+    healthcheck:
+      test: ["CMD-SHELL", "[ $$(redis-cli ping) = 'PONG' ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_interval: 5s
+      start_period: 30s
 
   directus:
-    image: directus/directus:10.13.1
+    image: directus/directus:11.0.0 
+    # If you want to build from Dockerfile, use the following instead:
+    # build: 
+    #   context: ./ 
     ports:
       - 8055:8055
     volumes:
@@ -24,8 +45,10 @@ services:
       - ./extensions:/directus/extensions
       - ./templates:/directus/templates
     depends_on:
-      - cache
-      - database
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
     environment:
       KEY: "255d861b-5ea1-5996-9aa3-922530ec40b1"
       SECRET: "6116487b-cda1-52c2-b5b5-c8022c45e263"
@@ -38,6 +61,7 @@ services:
       DB_PASSWORD: "directus"
 
       CACHE_ENABLED: "true"
+      CACHE_AUTO_PURGE: "true"
       CACHE_STORE: "redis"
       REDIS: "redis://cache:6379"
 
@@ -46,6 +70,7 @@ services:
 
       WEBSOCKETS_ENABLED: "true"
       EXTENSIONS_AUTO_RELOAD: "true"
+      
 
       # Make sure to set this in production
       # (see https://docs.directus.io/self-hosted/config-options#general)
