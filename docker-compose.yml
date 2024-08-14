@@ -33,7 +33,7 @@ services:
       start_period: 30s
 
   directus:
-    image: directus/directus:11.0.0 
+    image: directus/directus:11
     # If you want to build from Dockerfile, use the following instead:
     # build: 
     #   context: ./ 
