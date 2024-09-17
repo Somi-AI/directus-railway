@@ -27,5 +27,8 @@ module.exports = function (env) {
             CORS_ALLOWED_HEADERS: env.CORS_ALLOWED_HEADERS,
             CORS_EXPOSED_HEADERS: env.CORS_EXPOSED_HEADERS,
             CORS_METHODS: env.CORS_METHODS,
+            EXTENSIONS_PATH: env.EXTENSIONS_PATH,
+            EMAIL_TEMPLATES_PATH: env.EMAIL_TEMPLATES_PATH,
+            MIGRATIONS_PATH: env.MIGRATIONS_PATH,
     };
 };

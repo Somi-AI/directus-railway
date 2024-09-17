@@ -1,0 +1,13 @@
+{
+	"name": "scripts",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"create-snapshot": "cd ../ && npx directus schema snapshot ./snapshots/snapshot.yaml && cp ./snapshots/snapshot.yaml ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": ""
+}

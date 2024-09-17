@@ -13,6 +13,13 @@ tags:
   - Railway
 ---
 
+# Latest updates
+- This has been updated to **Directus 11.1**
+- **Create snapshots with a single command:** cd scripts && pnpm create-snapshot
+- **Extension folder updates:** We've updated the extension folders to match the recommended structure. This ensures that you can load your downloaded and custom extensions correctly. Remember to commit the dist folder and package.json for custom extensions. We've included a custom extension as an example.
+- **Automatic schema synchronization:** Run cd scripts && pnpm create-snapshot to create a snapshot of your working schema from your local development environment. Then, push your branch for deployment, and it will - be synced to your Railway environment.
+- **Environment variable management:** We've added a .env.example file(duplicate and rename to .env) to manage your environment variables and secrets. Docker Compose will use this file to load the environment variables.
+
 # Directus railway template
 
 This example runs a [Directus](https://directus.io/) instance with minimal config using PostGIS.

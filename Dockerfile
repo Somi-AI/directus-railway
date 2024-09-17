@@ -1,15 +1,24 @@
 # Explicitly specify a Directus version to use on Railway
-FROM directus/directus:11
+FROM directus/directus:11.1
 
 USER root
 RUN corepack enable
 USER node
 
 # Installing contributed/custom extensions through npm on Railway
-RUN pnpm install directus-extension-computed-interface && pnpm install directus-extension-upsert && pnpm install directus-extension-wpslug-interface && pnpm install pg && pnpm install directus-extension-sync
+RUN pnpm install directus-extension-computed-interface && pnpm install directus-extension-upsert && pnpm install directus-extension-wpslug-interface && pnpm install pg
 
-# Uncomment this if you would like to install contributed/custom extensions through the extensions folder on Railway
-#COPY ./extensions /directus/extensions
+# Copying the extensions, templates, migrations, and snapshots to the Directus container
+COPY ./extensions /directus/extensions
+COPY ./templates /directus/templates
+COPY ./migrations /directus/migrations
+COPY ./snapshots /directus/snapshots
+COPY ./config.cjs /directus/config.cjs           
 
-COPY ./config.cjs /directus/config.cjs
-
+# Custom entrypoint script to run Directus on Railway for migrations, snapshots, and extensions
+COPY entrypoint.sh /directus/entrypoint.sh
+WORKDIR /directus
+USER root
+RUN chmod +x ./entrypoint.sh
+USER node
+ENTRYPOINT ["./entrypoint.sh"]
