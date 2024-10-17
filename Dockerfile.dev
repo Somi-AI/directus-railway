@@ -13,4 +13,5 @@ USER node
 RUN npx directus bootstrap
 
 # Restore schema snapshots
+# COPY ./snapshots /directus/snapshots
 # RUN npx directus schema apply --yes /directus/files/snapshots/snapshot.yaml
