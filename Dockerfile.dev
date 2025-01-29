@@ -3,6 +3,10 @@ FROM directus/directus:11.4
 
 USER root
 
+# Set the environment variable for your timezone if needed
+# RUN apk add --no-cache tzdata
+# ENV TZ=America/New_York
+
 RUN npm install -g pnpm
 
 USER node
