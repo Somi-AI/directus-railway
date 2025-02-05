@@ -7,7 +7,7 @@ USER root
 # RUN apk add --no-cache tzdata
 # ENV TZ=America/New_York
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm --force
 
 USER node
 
