@@ -1,5 +1,5 @@
 # Explicitly specify a Directus version to use on Railway
-FROM directus/directus:11.6
+FROM directus/directus:11.9
 
 USER root
 
@@ -15,7 +15,9 @@ USER node
 RUN pnpm install directus-extension-computed-interface && pnpm install directus-extension-upsert && \
 pnpm install directus-extension-wpslug-interface && pnpm install pg && \
 pnpm install directus-extension-flexible-editor && pnpm install @directus-labs/simple-list-interface && \
-pnpm install @directus-labs/migration-bundle
+pnpm install @directus-labs/migration-bundle && \
+pnpm install directus-extension-sync && \
+pnpm install @directus-labs/super-header-interface
 
 # Migrations and Directus schema update
 RUN npx directus bootstrap
